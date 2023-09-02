@@ -1,0 +1,32 @@
+{% extends 'adminhome.html' %}
+{% block content %}
+
+<div class="container">
+    <table class="table table stripped bg-info">
+        <tr>
+            <th>Product Name</th>
+            <th>Price</th>
+            <th>Brand</th>
+            <th>Categoray</th>
+            <th>Status</th>
+            <th>Date</th>
+        </tr>
+        {% for product in products %}
+        {% if pro.product.Merchant == reuest.user %}
+        <tr>
+            <td>{{product.product.product_Name}}</td>
+            <td>{{product.product.product_price}}</td>
+            <td>{{product.product.product_Brand}}</td>
+            <td>{{product.product.product_category}}</td>
+            {% if pro.paymentstatus == False%}
+            <td style="color:yellow">payment Pending </td>
+            {% else %}
+            <td style ="color:green">payment Done</td>
+            {% endif %}
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

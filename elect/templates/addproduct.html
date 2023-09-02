@@ -1,0 +1,36 @@
+{% extends 'adminhome.html' %}
+{% block content %}
+<style>
+    .addproductcontainer{
+        margin: auto;
+        margin-top: 5%;
+        width: 80%;
+        height:100%;
+        text-align: center;
+        box-shadow: 5px 10px #888888;
+        padding: 20px;
+        background-color: rgb(255,254,252);
+    }
+    .addproductcontainer input{
+        width:100% ;
+        height:100% ;
+    }
+</style>
+<div class="container">
+    <div class="addproductcontainer">
+        <h4>Add Product</h4>
+        {% for message in message %}
+        <h6 style="color: blueviolet">{{message}}</h6>
+        {% endfor %}
+        <form method="Post" enctype="multipart/form-data">
+        {% csrf_token %}
+            {% for field in form %}
+            {{field.label}}:<br>
+            {{field}}
+            <br><br>
+            {%  endfor %}
+            <button class="btn btn-warning" type="submit">Add Product</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
